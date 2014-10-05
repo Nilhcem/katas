@@ -11,9 +11,9 @@ public class FizzBuzzTest {
     private FizzBuzz fizzbuzz = new FizzBuzz();
 
     @Test
-    public void should_return_string_numbers_in_a_given_range() {
-        List<String> result = fizzbuzz.getNumbersInRange(1, 2);
-        assertThat(result).containsExactly("1", "2");
+    public void should_return_number_to_string_when_not_multiple() {
+        String result = fizzbuzz.getFormattedNumber(1);
+        assertThat(result).isEqualTo("1");
     }
 
     @Test
@@ -35,7 +35,7 @@ public class FizzBuzzTest {
     }
 
     @Test
-    public void should_return_result_in_a_one_to_sixteen_range() {
+    public void should_return_numbers_in_a_given_range() {
         List<String> result = fizzbuzz.getNumbersInRange(1, 16);
         assertThat(result).containsExactly("1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz", "16");
     }
