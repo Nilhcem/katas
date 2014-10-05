@@ -27,4 +27,10 @@ public class FizzBuzzTest {
         String result = fizzbuzz.getFormattedNumber(5);
         assertThat(result).isEqualTo("Buzz");
     }
+
+    @Test
+    public void should_return_fizzbuzz_when_number_is_both_multiple_of_three_and_five() {
+        String result = fizzbuzz.getFormattedNumber(15);
+        assertThat(result).isEqualTo("FizzBuzz");
+    }
 }

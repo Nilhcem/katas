@@ -15,12 +15,19 @@ public class FizzBuzz {
     }
 
     public String getFormattedNumber(int number) {
+        String result = "";
+
         if (number % 3 == 0) {
-            return "Fizz";
+            result += "Fizz";
         }
+
         if (number % 5 == 0) {
-            return "Buzz";
+            result += "Buzz";
         }
-        return Integer.toString(number);
+
+        if (result.isEmpty()) {
+            result = Integer.toString(number);
+        }
+        return result;
     }
 }
