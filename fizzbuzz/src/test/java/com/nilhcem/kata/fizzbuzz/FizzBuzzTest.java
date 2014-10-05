@@ -33,4 +33,10 @@ public class FizzBuzzTest {
         String result = fizzbuzz.getFormattedNumber(15);
         assertThat(result).isEqualTo("FizzBuzz");
     }
+
+    @Test
+    public void should_return_result_in_a_one_to_sixteen_range() {
+        List<String> result = fizzbuzz.getNumbersInRange(1, 16);
+        assertThat(result).containsExactly("1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz", "16");
+    }
 }
