@@ -5,6 +5,9 @@ import java.util.List;
 
 public class FizzBuzz {
 
+    private static final String FIZZ = "Fizz";
+    private static final String BUZZ = "Buzz";
+
     public List<String> getNumbersInRange(int from, int to) {
         List<String> result = new ArrayList<>(to - from + 1);
 
@@ -18,11 +21,11 @@ public class FizzBuzz {
         String result = "";
 
         if (number % 3 == 0) {
-            result += "Fizz";
+            result += FIZZ;
         }
 
         if (number % 5 == 0) {
-            result += "Buzz";
+            result += BUZZ;
         }
 
         if (result.isEmpty()) {
