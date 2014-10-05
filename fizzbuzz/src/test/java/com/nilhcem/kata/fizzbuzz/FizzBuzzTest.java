@@ -21,4 +21,10 @@ public class FizzBuzzTest {
         String result = fizzbuzz.getFormattedNumber(3);
         assertThat(result).isEqualTo("Fizz");
     }
+
+    @Test
+    public void should_return_buzz_when_number_is_multiple_of_five() {
+        String result = fizzbuzz.getFormattedNumber(5);
+        assertThat(result).isEqualTo("Buzz");
+    }
 }
