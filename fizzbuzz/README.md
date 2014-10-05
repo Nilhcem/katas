@@ -31,4 +31,4 @@ FizzBuzz
 
 ## Additional information
 
-[](http://codingdojo.org/cgi-bin/index.pl?KataFizzBuzz)
+[codingdojo.org](http://codingdojo.org/cgi-bin/index.pl?KataFizzBuzz)
