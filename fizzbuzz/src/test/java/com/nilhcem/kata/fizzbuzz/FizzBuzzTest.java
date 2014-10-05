@@ -11,7 +11,7 @@ public class FizzBuzzTest {
     private FizzBuzz fizzbuzz = new FizzBuzz();
 
     @Test
-    public void should_return_numbers_in_a_given_range() {
+    public void should_return_string_numbers_in_a_given_range() {
         List<String> result = fizzbuzz.getNumbersInRange(1, 2);
         assertThat(result).containsExactly("1", "2");
     }
