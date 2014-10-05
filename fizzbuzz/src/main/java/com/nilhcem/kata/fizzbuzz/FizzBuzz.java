@@ -9,12 +9,15 @@ public class FizzBuzz {
         List<String> result = new ArrayList<>(to - from + 1);
 
         for (int i = from; i <= to; i++) {
-            result.add(Integer.toString(i));
+            result.add(getFormattedNumber(i));
         }
         return result;
     }
 
     public String getFormattedNumber(int number) {
-        return null;
+        if (number % 3 == 0) {
+            return "Fizz";
+        }
+        return Integer.toString(number);
     }
 }
