@@ -13,4 +13,8 @@ public class FizzBuzz {
         }
         return result;
     }
+
+    public String getFormattedNumber(int number) {
+        return null;
+    }
 }
