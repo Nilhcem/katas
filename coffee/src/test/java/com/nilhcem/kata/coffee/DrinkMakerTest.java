@@ -2,11 +2,12 @@ package com.nilhcem.kata.coffee;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 public class DrinkMakerTest {
 
@@ -22,19 +23,16 @@ public class DrinkMakerTest {
     }
 
     @Test
-    public void should_return_null_when_instruction_size_is_invalid() {
-        assertThat(drinkMaker.parseInstruction("OMG")).isNull();
-    }
-
-    @Test
     public void should_return_null_when_instruction_type_is_invalid() {
         assertThat(drinkMaker.parseInstruction("Z:0:0")).isNull();
+        verify(coffeeMachine).printMessage(true, "Invalid instruction type");
     }
 
     @Test
     public void should_return_null_when_giving_other_than_zero_one_or_two_sugars() {
         assertThat(drinkMaker.parseInstruction("T:3:0")).isNull();
         assertThat(drinkMaker.parseInstruction("T:-1:0")).isNull();
+        verify(coffeeMachine, times(2)).printMessage(true, "Invalid number of sugars. Please select 0, 1 or 2");
     }
 
     @Test
@@ -89,6 +87,6 @@ public class DrinkMakerTest {
 
         // Then
         assertThat(order).isNull();
-        Mockito.verify(coffeeMachine).printMessage(false, "hello");
+        verify(coffeeMachine).printMessage(false, "hello");
     }
 }

@@ -51,7 +51,7 @@ public class DrinkMaker {
             try {
                 nbSugars = Integer.parseInt(instruction);
                 if (nbSugars < 0 || nbSugars > 2) {
-                    coffeeMachine.printMessage(true, "Can only have [0-2] sugars. Here: " + instruction);
+                    System.err.println("Can only have [0-2] sugars. Here: " + instruction);
                     nbSugars = null;
                 }
             } catch (NumberFormatException e) {
