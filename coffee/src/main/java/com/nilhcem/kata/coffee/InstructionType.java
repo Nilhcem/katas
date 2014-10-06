@@ -13,9 +13,16 @@ public enum InstructionType {
         this.instruction = instruction;
     }
 
+    public String getInstruction() {
+        return instruction;
+    }
+
     public static InstructionType getFromInstruction(String instruction) {
-
-
+        for (InstructionType type : InstructionType.values()) {
+            if (instruction.equals(type.getInstruction())) {
+                return type;
+            }
+        }
         return null;
     }
 }
