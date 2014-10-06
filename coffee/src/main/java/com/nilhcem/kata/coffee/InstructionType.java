@@ -12,4 +12,10 @@ public enum InstructionType {
     private InstructionType(String instruction) {
         this.instruction = instruction;
     }
+
+    public static InstructionType getFromInstruction(String instruction) {
+
+
+        return null;
+    }
 }
