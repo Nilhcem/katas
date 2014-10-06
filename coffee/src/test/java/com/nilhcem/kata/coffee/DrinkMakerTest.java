@@ -19,7 +19,7 @@ public class DrinkMakerTest {
     }
 
     @Test
-    public void should_return_null_when_giving_other_than_one_or_two_sugars() {
+    public void should_return_null_when_giving_other_than_zero_one_or_two_sugars() {
         assertThat(drinkMaker.parseInstruction("T:3:0")).isNull();
         assertThat(drinkMaker.parseInstruction("T:-1:0")).isNull();
     }
@@ -35,6 +35,5 @@ public class DrinkMakerTest {
         // Then
         assertThat(order.getInstructionType()).isEqualTo(InstructionType.TEA);
         assertThat(order.getNbSugar()).isEqualTo(1);
-        assertThat(order.hasStick()).isTrue();
     }
 }

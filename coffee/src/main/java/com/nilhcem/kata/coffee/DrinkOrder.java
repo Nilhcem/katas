@@ -3,9 +3,11 @@ package com.nilhcem.kata.coffee;
 public class DrinkOrder {
 
     private InstructionType type;
+    private int nbSugars;
 
-    public DrinkOrder(InstructionType type) {
+    public DrinkOrder(InstructionType type, int nbSugars) {
         this.type = type;
+        this.nbSugars = nbSugars;
     }
 
     public InstructionType getInstructionType() {
@@ -13,7 +15,7 @@ public class DrinkOrder {
     }
 
     public int getNbSugar() {
-        return 0;
+        return nbSugars;
     }
 
     public boolean hasStick() {

@@ -17,10 +17,32 @@ public class DrinkMaker {
             return null;
         }
 
-        return new DrinkOrder(type);
+        Integer nbSugars = getNbSugarsFromInstruction(splitted[1]);
+        if (nbSugars == null) {
+            System.err.println("Nb sugars is invalid");
+            return null;
+        }
+
+
+        return new DrinkOrder(type, nbSugars);
     }
 
-    private InstructionType getInstructionTypeFrom(String instruction) {
-        return null;
+    private Integer getNbSugarsFromInstruction(String instruction) {
+        Integer nbSugars = null;
+
+        if (instruction.isEmpty()) {
+            nbSugars = 0;
+        } else if (instruction.matches("[0-9]+")) {
+            try {
+                nbSugars = Integer.parseInt(instruction);
+                if (nbSugars < 0 || nbSugars > 2) {
+                    System.err.println("Can only have [0-2] sugars. Here: " + instruction);
+                    nbSugars = null;
+                }
+            } catch (NumberFormatException e) {
+                System.err.println("Cannot parse int: " + instruction);
+            }
+        }
+        return nbSugars;
     }
 }
