@@ -35,5 +35,6 @@ public class DrinkMakerTest {
         // Then
         assertThat(order.getInstructionType()).isEqualTo(InstructionType.TEA);
         assertThat(order.getNbSugar()).isEqualTo(1);
+        assertThat(order.hasStick()).isTrue();
     }
 }

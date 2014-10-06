@@ -4,10 +4,12 @@ public class DrinkOrder {
 
     private InstructionType type;
     private int nbSugars;
+    private boolean hasStick;
 
-    public DrinkOrder(InstructionType type, int nbSugars) {
+    public DrinkOrder(InstructionType type, int nbSugars, boolean hasStick) {
         this.type = type;
         this.nbSugars = nbSugars;
+        this.hasStick = hasStick;
     }
 
     public InstructionType getInstructionType() {
@@ -19,6 +21,6 @@ public class DrinkOrder {
     }
 
     public boolean hasStick() {
-        return false;
+        return hasStick;
     }
 }

@@ -23,8 +23,7 @@ public class DrinkMaker {
             return null;
         }
 
-
-        return new DrinkOrder(type, nbSugars);
+        return new DrinkOrder(type, nbSugars, nbSugars > 0);
     }
 
     private Integer getNbSugarsFromInstruction(String instruction) {
