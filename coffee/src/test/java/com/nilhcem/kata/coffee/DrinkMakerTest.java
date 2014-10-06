@@ -6,7 +6,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DrinkMakerTest {
 
-    DrinkMaker drinkMaker = new DrinkMaker();
+    CoffeeMachine coffeeMachine = new CoffeeMachine();
+    DrinkMaker drinkMaker = new DrinkMaker(coffeeMachine);
 
     @Test
     public void should_return_null_when_instruction_size_is_invalid() {
@@ -52,4 +53,30 @@ public class DrinkMakerTest {
         assertThat(order.hasStick()).isFalse();
     }
 
+    @Test
+    public void should_create_order_when_giving_valid_instructions_C_2_0() {
+        // Given
+        String instruction = "C:2:0";
+
+        // When
+        DrinkOrder order = drinkMaker.parseInstruction(instruction);
+
+        // Then
+        assertThat(order.getInstructionType()).isEqualTo(InstructionType.COFFEE);
+        assertThat(order.getNbSugar()).isEqualTo(2);
+        assertThat(order.hasStick()).isTrue();
+    }
+
+    @Test
+    public void should_forward_message_to_the_coffee_machine_when_giving_valid_instructions_M() {
+        // Given
+        String instruction = "M:hello";
+
+        // When
+        DrinkOrder order = drinkMaker.parseInstruction(instruction);
+
+        // Then
+        assertThat(order).isNull();
+        assertThat(coffeeMachine.getMessage()).isEqualTo("hello");
+    }
 }

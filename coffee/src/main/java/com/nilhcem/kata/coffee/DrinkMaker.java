@@ -4,6 +4,12 @@ public class DrinkMaker {
 
     private static final String INSTRUCTIONS_SEPARATOR = ":";
 
+    private CoffeeMachine coffeeMachine;
+
+    public DrinkMaker(CoffeeMachine coffeeMachine) {
+        this.coffeeMachine = coffeeMachine;
+    }
+
     public DrinkOrder parseInstruction(String instruction) {
         String[] splitted = instruction.split(INSTRUCTIONS_SEPARATOR);
         if (splitted.length < 1) {
