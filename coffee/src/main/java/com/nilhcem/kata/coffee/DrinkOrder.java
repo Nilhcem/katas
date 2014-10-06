@@ -11,4 +11,12 @@ public class DrinkOrder {
     public InstructionType getInstructionType() {
         return type;
     }
+
+    public int getNbSugar() {
+        return 0;
+    }
+
+    public boolean hasStick() {
+        return false;
+    }
 }
