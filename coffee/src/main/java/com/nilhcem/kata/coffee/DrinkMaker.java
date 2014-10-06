@@ -11,6 +11,8 @@ public class DrinkMaker {
     }
 
     public DrinkOrder parseInstruction(String instruction) {
+        DrinkOrder order = null;
+
         String[] splitted = instruction.split(INSTRUCTIONS_SEPARATOR);
         if (splitted.length < 1) {
             System.err.println("Instruction size is invalid");
@@ -23,13 +25,21 @@ public class DrinkMaker {
             return null;
         }
 
-        Integer nbSugars = getNbSugarsFromInstruction(splitted.length > 2 ? splitted[1] : null);
-        if (nbSugars == null) {
-            System.err.println("Nb sugars is invalid");
-            return null;
+        if (InstructionType.MESSAGE.equals(type)) {
+            String message = "";
+            if (splitted.length > 1) {
+                message = splitted[1];
+            }
+            coffeeMachine.setMessage(message);
+        } else {
+            Integer nbSugars = getNbSugarsFromInstruction(splitted.length > 2 ? splitted[1] : null);
+            if (nbSugars == null) {
+                System.err.println("Nb sugars is invalid");
+                return null;
+            }
+            order = new DrinkOrder(type, nbSugars, nbSugars > 0);
         }
-
-        return new DrinkOrder(type, nbSugars, nbSugars > 0);
+        return order;
     }
 
     private Integer getNbSugarsFromInstruction(String instruction) {
