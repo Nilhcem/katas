@@ -1,13 +1,25 @@
 package com.nilhcem.kata.coffee;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DrinkMakerTest {
 
+    DrinkMaker drinkMaker;
+
+    @Spy
     CoffeeMachine coffeeMachine = new CoffeeMachine();
-    DrinkMaker drinkMaker = new DrinkMaker(coffeeMachine);
+
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+        drinkMaker = new DrinkMaker(coffeeMachine);
+    }
 
     @Test
     public void should_return_null_when_instruction_size_is_invalid() {
@@ -77,6 +89,6 @@ public class DrinkMakerTest {
 
         // Then
         assertThat(order).isNull();
-        assertThat(coffeeMachine.getMessage()).isEqualTo("hello");
+        Mockito.verify(coffeeMachine).printMessage(false, "hello");
     }
 }
