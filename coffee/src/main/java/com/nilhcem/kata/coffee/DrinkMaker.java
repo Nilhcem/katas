@@ -6,7 +6,7 @@ public class DrinkMaker {
 
     public DrinkOrder parseInstruction(String instruction) {
         String[] splitted = instruction.split(INSTRUCTIONS_SEPARATOR);
-        if (splitted.length != 3) {
+        if (splitted.length < 1) {
             System.err.println("Instruction size is invalid");
             return null;
         }
@@ -17,7 +17,7 @@ public class DrinkMaker {
             return null;
         }
 
-        Integer nbSugars = getNbSugarsFromInstruction(splitted[1]);
+        Integer nbSugars = getNbSugarsFromInstruction(splitted.length > 2 ? splitted[1] : null);
         if (nbSugars == null) {
             System.err.println("Nb sugars is invalid");
             return null;
@@ -29,7 +29,7 @@ public class DrinkMaker {
     private Integer getNbSugarsFromInstruction(String instruction) {
         Integer nbSugars = null;
 
-        if (instruction.isEmpty()) {
+        if (instruction == null || instruction.isEmpty()) {
             nbSugars = 0;
         } else if (instruction.matches("[0-9]+")) {
             try {

@@ -37,4 +37,19 @@ public class DrinkMakerTest {
         assertThat(order.getNbSugar()).isEqualTo(1);
         assertThat(order.hasStick()).isTrue();
     }
+
+    @Test
+    public void should_create_order_when_giving_valid_instruction_H__() {
+        // Given
+        String instruction = "H::";
+
+        // When
+        DrinkOrder order = drinkMaker.parseInstruction(instruction);
+
+        // Then
+        assertThat(order.getInstructionType()).isEqualTo(InstructionType.CHOCOLATE);
+        assertThat(order.getNbSugar()).isEqualTo(0);
+        assertThat(order.hasStick()).isFalse();
+    }
+
 }
