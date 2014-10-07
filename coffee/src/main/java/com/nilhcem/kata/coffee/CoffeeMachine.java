@@ -9,4 +9,13 @@ public class CoffeeMachine {
             System.out.println(message);
         }
     }
+
+    public void enterMoney(int cents) {
+
+
+    }
+
+    public DrinkOrder makeDrink(String instructions) {
+        return null;
+    }
 }

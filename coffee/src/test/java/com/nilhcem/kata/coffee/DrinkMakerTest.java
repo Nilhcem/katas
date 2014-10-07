@@ -11,10 +11,10 @@ import static org.mockito.Mockito.verify;
 
 public class DrinkMakerTest {
 
-    DrinkMaker drinkMaker;
+    private DrinkMaker drinkMaker;
 
     @Spy
-    CoffeeMachine coffeeMachine = new CoffeeMachine();
+    private CoffeeMachine coffeeMachine = new CoffeeMachine();
 
     @Before
     public void setup() {
