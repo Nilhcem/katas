@@ -15,13 +15,13 @@ public class DrinkMaker {
 
         String[] splitted = instruction.split(INSTRUCTIONS_SEPARATOR);
         if (splitted.length < 1) {
-            coffeeMachine.printMessage(true, "Invalid instruction");
+            coffeeMachine.displayMessage(true, "Invalid instruction");
             return null;
         }
 
         InstructionType type = InstructionType.getFromInstruction(splitted[0]);
         if (type == null) {
-            coffeeMachine.printMessage(true, "Invalid instruction type");
+            coffeeMachine.displayMessage(true, "Invalid instruction type");
             return null;
         }
 
@@ -30,11 +30,11 @@ public class DrinkMaker {
             if (splitted.length > 1) {
                 message = splitted[1];
             }
-            coffeeMachine.printMessage(false, message);
+            coffeeMachine.displayMessage(false, message);
         } else {
             Integer nbSugars = getNbSugarsFromInstruction(splitted.length > 2 ? splitted[1] : null);
             if (nbSugars == null) {
-                coffeeMachine.printMessage(true, "Invalid number of sugars. Please select 0, 1 or 2");
+                coffeeMachine.displayMessage(true, "Invalid number of sugars. Please select 0, 1 or 2");
                 return null;
             }
             order = new DrinkOrder(type, nbSugars, nbSugars > 0);

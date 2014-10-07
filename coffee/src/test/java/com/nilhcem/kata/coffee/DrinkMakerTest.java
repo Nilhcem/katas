@@ -25,14 +25,14 @@ public class DrinkMakerTest {
     @Test
     public void should_return_null_when_instruction_type_is_invalid() {
         assertThat(drinkMaker.parseInstruction("Z:0:0")).isNull();
-        verify(coffeeMachine).printMessage(true, "Invalid instruction type");
+        verify(coffeeMachine).displayMessage(true, "Invalid instruction type");
     }
 
     @Test
     public void should_return_null_when_giving_other_than_zero_one_or_two_sugars() {
         assertThat(drinkMaker.parseInstruction("T:3:0")).isNull();
         assertThat(drinkMaker.parseInstruction("T:-1:0")).isNull();
-        verify(coffeeMachine, times(2)).printMessage(true, "Invalid number of sugars. Please select 0, 1 or 2");
+        verify(coffeeMachine, times(2)).displayMessage(true, "Invalid number of sugars. Please select 0, 1 or 2");
     }
 
     @Test
@@ -87,6 +87,6 @@ public class DrinkMakerTest {
 
         // Then
         assertThat(order).isNull();
-        verify(coffeeMachine).printMessage(false, "hello");
+        verify(coffeeMachine).displayMessage(false, "hello");
     }
 }
