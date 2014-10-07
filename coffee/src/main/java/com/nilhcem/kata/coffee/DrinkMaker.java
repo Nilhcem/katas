@@ -1,8 +1,8 @@
 package com.nilhcem.kata.coffee;
 
-public class DrinkMaker {
+import static com.nilhcem.kata.coffee.CoffeeMachine.INSTRUCTIONS_SEPARATOR;
 
-    private static final String INSTRUCTIONS_SEPARATOR = ":";
+public class DrinkMaker {
 
     private CoffeeMachine coffeeMachine;
 
@@ -10,36 +10,14 @@ public class DrinkMaker {
         this.coffeeMachine = coffeeMachine;
     }
 
-    public DrinkOrder parseInstruction(String instruction) {
-        DrinkOrder order = null;
-
+    public DrinkOrder makeDrink(InstructionType type, String instruction) {
         String[] splitted = instruction.split(INSTRUCTIONS_SEPARATOR);
-        if (splitted.length < 1) {
-            coffeeMachine.displayMessage(true, "Invalid instruction");
+        Integer nbSugars = getNbSugarsFromInstruction(splitted.length > 2 ? splitted[1] : null);
+        if (nbSugars == null) {
+            coffeeMachine.displayMessage(true, "Invalid number of sugars. Please select 0, 1 or 2");
             return null;
         }
-
-        InstructionType type = InstructionType.getFromInstruction(splitted[0]);
-        if (type == null) {
-            coffeeMachine.displayMessage(true, "Invalid instruction type");
-            return null;
-        }
-
-        if (InstructionType.MESSAGE.equals(type)) {
-            String message = "";
-            if (splitted.length > 1) {
-                message = splitted[1];
-            }
-            coffeeMachine.displayMessage(false, message);
-        } else {
-            Integer nbSugars = getNbSugarsFromInstruction(splitted.length > 2 ? splitted[1] : null);
-            if (nbSugars == null) {
-                coffeeMachine.displayMessage(true, "Invalid number of sugars. Please select 0, 1 or 2");
-                return null;
-            }
-            order = new DrinkOrder(type, nbSugars, nbSugars > 0);
-        }
-        return order;
+        return new DrinkOrder(type, nbSugars, nbSugars > 0);
     }
 
     private Integer getNbSugarsFromInstruction(String instruction) {

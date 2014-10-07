@@ -23,15 +23,9 @@ public class DrinkMakerTest {
     }
 
     @Test
-    public void should_return_null_when_instruction_type_is_invalid() {
-        assertThat(drinkMaker.parseInstruction("Z:0:0")).isNull();
-        verify(coffeeMachine).displayMessage(true, "Invalid instruction type");
-    }
-
-    @Test
     public void should_return_null_when_giving_other_than_zero_one_or_two_sugars() {
-        assertThat(drinkMaker.parseInstruction("T:3:0")).isNull();
-        assertThat(drinkMaker.parseInstruction("T:-1:0")).isNull();
+        assertThat(drinkMaker.makeDrink(InstructionType.TEA, "T:3:0")).isNull();
+        assertThat(drinkMaker.makeDrink(InstructionType.TEA, "T:-1:0")).isNull();
         verify(coffeeMachine, times(2)).displayMessage(true, "Invalid number of sugars. Please select 0, 1 or 2");
     }
 
@@ -41,7 +35,7 @@ public class DrinkMakerTest {
         String instruction = "T:1:0";
 
         // When
-        DrinkOrder order = drinkMaker.parseInstruction(instruction);
+        DrinkOrder order = drinkMaker.makeDrink(InstructionType.TEA, instruction);
 
         // Then
         assertThat(order.getInstructionType()).isEqualTo(InstructionType.TEA);
@@ -55,7 +49,7 @@ public class DrinkMakerTest {
         String instruction = "H::";
 
         // When
-        DrinkOrder order = drinkMaker.parseInstruction(instruction);
+        DrinkOrder order = drinkMaker.makeDrink(InstructionType.CHOCOLATE, instruction);
 
         // Then
         assertThat(order.getInstructionType()).isEqualTo(InstructionType.CHOCOLATE);
@@ -69,24 +63,11 @@ public class DrinkMakerTest {
         String instruction = "C:2:0";
 
         // When
-        DrinkOrder order = drinkMaker.parseInstruction(instruction);
+        DrinkOrder order = drinkMaker.makeDrink(InstructionType.COFFEE, instruction);
 
         // Then
         assertThat(order.getInstructionType()).isEqualTo(InstructionType.COFFEE);
         assertThat(order.getNbSugar()).isEqualTo(2);
         assertThat(order.hasStick()).isTrue();
-    }
-
-    @Test
-    public void should_forward_message_to_the_coffee_machine_when_giving_valid_instructions_M() {
-        // Given
-        String instruction = "M:hello";
-
-        // When
-        DrinkOrder order = drinkMaker.parseInstruction(instruction);
-
-        // Then
-        assertThat(order).isNull();
-        verify(coffeeMachine).displayMessage(false, "hello");
     }
 }
