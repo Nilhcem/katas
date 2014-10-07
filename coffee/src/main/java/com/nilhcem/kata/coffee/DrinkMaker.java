@@ -17,7 +17,7 @@ public class DrinkMaker {
             coffeeMachine.displayMessage(true, "Invalid number of sugars. Please select 0, 1 or 2");
             return null;
         }
-        return new DrinkOrder(type, nbSugars, nbSugars > 0);
+        return new DrinkOrder(type, nbSugars, nbSugars > 0, handleExtraHotInstruction(type, instruction));
     }
 
     private Integer getNbSugarsFromInstruction(String instruction) {
@@ -37,5 +37,9 @@ public class DrinkMaker {
             }
         }
         return nbSugars;
+    }
+
+    private boolean handleExtraHotInstruction(InstructionType type, String instruction) {
+        return type.canBeExtraHot() && instruction.length() > 2 && instruction.substring(1, 2).equals("h");
     }
 }
