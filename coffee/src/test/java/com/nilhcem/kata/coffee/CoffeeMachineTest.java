@@ -47,4 +47,12 @@ public class CoffeeMachineTest {
         assertThat(order).isNotNull();
         verify(coffeeMachine, times(0)).displayMessage(anyBoolean(), anyString());
     }
+
+    @Test
+    public void should_not_make_a_drink_and_display_required_left_amount_when_not_giving_enough_money() {
+        coffeeMachine.enterMoney(10);
+        DrinkOrder order = coffeeMachine.makeDrink("T:1:0");
+        assertThat(order).isNull();
+        verify(coffeeMachine).displayMessage(true, "Missing: 30 cents");
+    }
 }
