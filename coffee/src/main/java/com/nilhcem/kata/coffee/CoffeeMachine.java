@@ -53,7 +53,7 @@ public class CoffeeMachine {
         if (centsInMachine >= cost) {
             success = true;
         } else {
-            // TODO
+            displayMessage(true, String.format("Missing: %d cents", cost - centsInMachine));
         }
         return success;
     }
