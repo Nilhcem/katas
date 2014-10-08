@@ -23,7 +23,7 @@ public class CoffeeMachineTest {
 
     @Test
     public void should_return_null_when_instruction_type_is_invalid() {
-        assertThat(coffeeMachine.makeDrink("Z:0:0")).isNull();
+        assertThat(coffeeMachine.enterInstructions("Z:0:0")).isNull();
         verify(coffeeMachine).displayMessage(true, "Invalid instruction type");
     }
 
@@ -33,7 +33,7 @@ public class CoffeeMachineTest {
         String instructions = "M:hello";
 
         // When
-        DrinkOrder drinkOrder = coffeeMachine.makeDrink(instructions);
+        DrinkOrder drinkOrder = coffeeMachine.enterInstructions(instructions);
 
         // Then
         assertThat(drinkOrder).isNull();
@@ -43,7 +43,7 @@ public class CoffeeMachineTest {
     @Test
     public void should_make_a_drink_when_giving_enough_money() {
         coffeeMachine.enterMoney(100);
-        DrinkOrder order = coffeeMachine.makeDrink("T:1:0");
+        DrinkOrder order = coffeeMachine.enterInstructions("T:1:0");
         assertThat(order).isNotNull();
         verify(coffeeMachine, times(0)).displayMessage(anyBoolean(), anyString());
     }
@@ -51,8 +51,23 @@ public class CoffeeMachineTest {
     @Test
     public void should_not_make_a_drink_and_display_required_left_amount_when_not_giving_enough_money() {
         coffeeMachine.enterMoney(10);
-        DrinkOrder order = coffeeMachine.makeDrink("T:1:0");
+        DrinkOrder order = coffeeMachine.enterInstructions("T:1:0");
         assertThat(order).isNull();
         verify(coffeeMachine).displayMessage(true, "Missing: 30 cents");
+    }
+
+    @Test
+    public void should_display_report_when_giving_valid_instructions_M_reporting() {
+        // Given
+        coffeeMachine.enterMoney(40);
+        coffeeMachine.enterInstructions("T:1:0");
+        coffeeMachine.enterMoney(40);
+        coffeeMachine.enterInstructions("T:1:0");
+
+        // When
+        coffeeMachine.enterInstructions("M:reporting");
+
+        // Then
+        verify(coffeeMachine).displayMessage(false, "Nb drinks sold: 2 - Money earned: 80");
     }
 }
