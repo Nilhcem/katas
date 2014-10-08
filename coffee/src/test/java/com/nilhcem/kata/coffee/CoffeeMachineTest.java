@@ -68,6 +68,9 @@ public class CoffeeMachineTest {
         coffeeMachine.enterInstructions("M:reporting");
 
         // Then
-        verify(coffeeMachine).displayMessage(false, "Nb drinks sold: 2 - Money earned: 80");
+        String separator = System.lineSeparator();
+        verify(coffeeMachine).displayMessage(false, "Drinks sold:" + separator + "TEA: 2" + separator +
+                "CHOCOLATE: 0" + separator + "COFFEE: 0" + separator + "ORANGE_JUICE: 0" + separator +
+                "Money earned: 80");
     }
 }

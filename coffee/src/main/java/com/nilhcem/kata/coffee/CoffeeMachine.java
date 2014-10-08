@@ -33,7 +33,7 @@ public class CoffeeMachine {
             } else {
                 if (handleMoneyCheck(type)) {
                     order = drinkMaker.makeDrink(type, instructions);
-                    reporting.addDrink(type.getCostInCents());
+                    reporting.addDrink(type);
                 }
             }
         }

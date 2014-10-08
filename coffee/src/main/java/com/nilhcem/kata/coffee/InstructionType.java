@@ -2,19 +2,21 @@ package com.nilhcem.kata.coffee;
 
 public enum InstructionType {
 
-    TEA("T", 40, true),
-    CHOCOLATE("H", 50, true),
-    COFFEE("C", 60, true),
-    ORANGE_JUICE("O", 60, false),
-    MESSAGE("M", 0, false);
+    TEA("T", 40, true, true),
+    CHOCOLATE("H", 50, true, true),
+    COFFEE("C", 60, true, true),
+    ORANGE_JUICE("O", 60, true, false),
+    MESSAGE("M", 0, false, false);
 
     private String instruction;
     private int costInCents;
+    private boolean isDrink;
     private boolean canBeExtraHot;
 
-    private InstructionType(String instruction, int costInCents, boolean canBeExtraHot) {
+    private InstructionType(String instruction, int costInCents, boolean isDrink, boolean canBeExtraHot) {
         this.instruction = instruction;
         this.costInCents = costInCents;
+        this.isDrink = isDrink;
         this.canBeExtraHot = canBeExtraHot;
     }
 
@@ -24,6 +26,10 @@ public enum InstructionType {
 
     public String getInstruction() {
         return instruction;
+    }
+
+    public boolean isDrink() {
+        return isDrink;
     }
 
     public boolean canBeExtraHot() {
