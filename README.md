@@ -8,6 +8,14 @@
 ./gradlew clean :fizzbuzz:test :fizzbuzz:run
 ```
 
+## [Fibonacci](fibonacci)
+
+*Have you ever tried parameterized tests?*
+
+```bash
+./gradlew clean :fibonacci:test :fibonacci:run
+```
+
 ## [CoffeeMachine](coffee)
 
 *TDD beyond hello world - You can also use mocks*
