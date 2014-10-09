@@ -2,9 +2,9 @@
 
 ## Rules
 
-The Fibonacci sequence (named after the Italian mathematician Leonardo Fibonacci) is a sequence of numbers where each number is the sum of the previous two numbers.
+The Fibonacci sequence is a sequence of numbers where each number is the sum of the previous two numbers.
 
-- Return a fibonacci sequence of any specified length. (1, 1, 2, 3, 5…)
+- Return a fibonacci sequence of any specified length.
 
 ## Example
 
@@ -22,7 +22,3 @@ fibonacci(10);
 34
 55
 ```
-
-## Additional information
-
-[codingdojo.org](http://codingdojo.org/cgi-bin/index.pl?KataFizzBuzz)
