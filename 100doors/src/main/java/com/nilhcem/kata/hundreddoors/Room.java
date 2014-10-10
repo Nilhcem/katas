@@ -12,7 +12,7 @@ public class Room {
     public Room() {
         doors = new ArrayList<>(NB_DOORS);
         for (int i = 0; i < NB_DOORS; i++) {
-            doors.add(new Door());
+            doors.add(new Door(i + 1));
         }
     }
 

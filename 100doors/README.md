@@ -13,11 +13,18 @@ Question: What state are the doors in after the last pass? Which are open, which
 ## Example
 
 ```
-#001: Opened
-#002: Closed
-#003: Opened
+#001: opened
+#002: closed
+#003: closed
+#004: opened
+#005: closed
+#006: closed
+#007: closed
+#008: closed
+#009: opened
+#010: closed
 ...
-#100: Closed
+#100: opened
 ```
 
 ## Additional information

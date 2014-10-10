@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DoorTest {
 
-    private Door door = new Door();
+    private Door door = new Door(1);
 
     @Test
     public void should_be_closed_by_default() {
