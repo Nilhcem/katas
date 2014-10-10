@@ -20,7 +20,11 @@ public class Room {
         return doors;
     }
 
-    public void toggleDoorsMultipleOf(int i) {
-
+    public void toggleDoorsMultipleOf(int nb) {
+        for (int i = 0; i < doors.size(); i++) {
+            if ((i + 1) % nb == 0) {
+                doors.get(i).toggle();
+            }
+        }
     }
 }
