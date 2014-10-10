@@ -19,4 +19,8 @@ public class Room {
     public List<Door> getAllDoors() {
         return doors;
     }
+
+    public void toggleDoorsMultipleOf(int i) {
+
+    }
 }

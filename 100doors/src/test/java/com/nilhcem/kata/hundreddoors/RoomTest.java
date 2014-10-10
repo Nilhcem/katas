@@ -19,4 +19,12 @@ public class RoomTest {
             assertThat(door.isOpened()).isFalse();
         }
     }
+
+    @Test
+    public void should_open_all_doors_at_first_pass() {
+        room.toggleDoorsMultipleOf(1);
+        for (Door door : room.getAllDoors()) {
+            assertThat(door.isOpened()).isTrue();
+        }
+    }
 }
