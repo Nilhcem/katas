@@ -6,7 +6,8 @@ import java.util.List;
 
 public class Grid {
 
-    private final Card[] cards;
+    final Card[] cards;
+    Card previouslyFlippedCard;
 
     public Grid(String... cards) {
         List<Card> deck = new ArrayList<>();
@@ -20,5 +21,10 @@ public class Grid {
 
     public int getNbCards() {
         return cards.length;
+    }
+
+    public void flipCard(int position) {
+        cards[position].flip();
+        previouslyFlippedCard = cards[position];
     }
 }
