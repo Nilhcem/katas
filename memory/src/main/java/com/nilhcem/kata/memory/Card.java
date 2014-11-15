@@ -12,4 +12,8 @@ public class Card {
     public boolean isFaceDown() {
         return faceDown;
     }
+
+    public void flip() {
+        faceDown = !faceDown;
+    }
 }
