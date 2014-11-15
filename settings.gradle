@@ -1,1 +1,1 @@
-include ':fizzbuzz', ':fibonacci', ':100doors', ':coffee'
+include ':fizzbuzz', ':fibonacci', ':100doors', ':coffee', ':memory'

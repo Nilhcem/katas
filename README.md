@@ -31,3 +31,11 @@
 ```bash
 ./gradlew clean :coffee:test :coffee:run
 ```
+
+## [Memory](memory)
+
+*A memory game where you should implement both the game grid and the player algorithm*
+
+```bash
+./gradlew clean :memory:test :memory:run
+```
