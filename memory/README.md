@@ -20,10 +20,12 @@
 ## Example
 
 ```
-- Game game = new Game("bird", "cat", "cow", "dog", "fish", "horse", "lion", "monkey", "panda", "tiger");
-- game.flipCard(0);
-- game.flipCard(15);
+Game game = new Game("bird", "cat", "cow", "dog", "fish", "horse", "lion", "monkey", "panda", "tiger");
+while (!game.isOver()) {
+  game.flipCard(0);
+  game.flipCard(15);
 ...
+}
 ```
 
 ## Additional information
