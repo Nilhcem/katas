@@ -6,31 +6,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class GridTest {
+public class GameTest {
 
-    private Grid grid = new Grid("Fox");
+    private Game game = new Game("Fox");
 
     @Test
-    public void should_initialize_a_grid_with_two_similar_cards_for_each_entry() {
-        assertThat(grid.getNbCards()).isEqualTo(2);
+    public void should_initialize_a_game_with_two_similar_cards_for_each_entry() {
+        assertThat(game.getNbCards()).isEqualTo(2);
     }
 
     @Test
-    public void should_flip_a_card_from_the_grid() {
-        grid.flipCard(0);
-        assertThat(grid.cards[0].isFaceDown()).isFalse();
-        assertThat(grid.cards[1].isFaceDown()).isTrue();
+    public void should_flip_a_card_from_the_game() {
+        game.flipCard(0);
+        assertThat(game.cards[0].isFaceDown()).isFalse();
+        assertThat(game.cards[1].isFaceDown()).isTrue();
     }
 
     @Test
     public void should_be_null_when_getting_previously_flipped_card_when_never_having_flipped_a_card() {
-        assertThat(grid.previouslyFlippedCard).isNull();
+        assertThat(game.previouslyFlippedCard).isNull();
     }
 
     @Test
     public void should_save_previously_flipped_card() {
-        grid.flipCard(1);
-        assertThat(grid.previouslyFlippedCard).isSameAs(grid.cards[1]);
+        game.flipCard(1);
+        assertThat(game.previouslyFlippedCard).isSameAs(game.cards[1]);
     }
 
     @Test(expected = UnsupportedOperationException.class)
@@ -38,15 +38,15 @@ public class GridTest {
         // Given
         Card card = mock(Card.class);
         when(card.isFaceDown()).thenReturn(false);
-        grid.cards[0] = card;
+        game.cards[0] = card;
 
         // When
-        grid.flipCard(0);
+        game.flipCard(0);
     }
 
     @Test
     public void should_return_false_when_some_cards_havent_still_be_found() {
-        assertThat(grid.isGameOver()).isFalse();
+        assertThat(game.isOver()).isFalse();
     }
 
     @Test
@@ -56,10 +56,10 @@ public class GridTest {
         Card card2 = mock(Card.class);
         when(card1.isFaceDown()).thenReturn(false);
         when(card2.isFaceDown()).thenReturn(false);
-        grid.cards[0] = card1;
-        grid.cards[1] = card2;
+        game.cards[0] = card1;
+        game.cards[1] = card2;
 
         // When
-        assertThat(grid.isGameOver()).isTrue();
+        assertThat(game.isOver()).isTrue();
     }
 }

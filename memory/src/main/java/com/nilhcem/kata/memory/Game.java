@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Grid {
+public class Game {
 
     final Card[] cards;
     Card previouslyFlippedCard;
 
-    public Grid(String... cards) {
+    public Game(String... cards) {
         List<Card> deck = new ArrayList<>();
         for (String card : cards) {
             deck.add(new Card(card));
@@ -33,7 +33,7 @@ public class Grid {
         previouslyFlippedCard = cardToFlip;
     }
 
-    public boolean isGameOver() {
+    public boolean isOver() {
         for (Card card : cards) {
             if (card.isFaceDown()) {
                 return false;
