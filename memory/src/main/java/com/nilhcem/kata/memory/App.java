@@ -3,6 +3,7 @@ package com.nilhcem.kata.memory;
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("Memory");
+        Game game = new Game("bird", "cat", "cow", "dog", "fish", "horse", "lion", "monkey", "panda", "tiger");
+        System.out.println("Game created");
     }
 }

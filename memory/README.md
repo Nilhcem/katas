@@ -12,12 +12,17 @@
     - the player's try count is incremented
 - When all the cards are laid face up, the game is over.
 
+## Steps
+
+- First, implement the game logic
+- Then, use the debugger to play (using "Evaluate Expression") and make sure it works
+
 ## Example
 
 ```
-- init("bird", "cat", "cow", "dog", "fish", "horse", "lion", "monkey", "panda", "tiger");
-- flip(0, 1);
-- flip(1, 1);
+- Game game = new Game("bird", "cat", "cow", "dog", "fish", "horse", "lion", "monkey", "panda", "tiger");
+- game.flipCard(0);
+- game.flipCard(15);
 ...
 ```
 

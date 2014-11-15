@@ -18,6 +18,11 @@ public class Card {
     }
 
     @Override
+    public String toString() {
+        return "Card{title='" + title + "', faceDown=" + faceDown + "}";
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
