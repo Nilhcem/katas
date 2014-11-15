@@ -30,7 +30,20 @@ public class Game {
         }
 
         cardToFlip.flip();
-        previouslyFlippedCard = cardToFlip;
+        if (previouslyFlippedCard == null) {
+            previouslyFlippedCard = cardToFlip;
+        } else {
+            setCardsToFaceOffAgainIfNotSimilar(previouslyFlippedCard, cardToFlip);
+            previouslyFlippedCard = null;
+        }
+    }
+
+    private void setCardsToFaceOffAgainIfNotSimilar(Card card1, Card card2) {
+        // If cards are not similar, then they must be face of again.
+        if (!card1.equals(card2)) {
+            card1.flip();
+            card2.flip();
+        }
     }
 
     public boolean isOver() {
