@@ -24,7 +24,11 @@ public class Grid {
     }
 
     public void flipCard(int position) {
-        cards[position].flip();
-        previouslyFlippedCard = cards[position];
+        Card cardToFlip = cards[position];
+        if (previouslyFlippedCard != null && previouslyFlippedCard == cardToFlip) {
+            throw new UnsupportedOperationException("You can't flip twice the same card");
+        }
+        cardToFlip.flip();
+        previouslyFlippedCard = cardToFlip;
     }
 }

@@ -30,4 +30,10 @@ public class GridTest {
         grid.flipCard(1);
         assertThat(grid.previouslyFlippedCard).isSameAs(grid.cards[1]);
     }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void should_throw_error_when_flipping_twice_the_same_card() {
+        grid.flipCard(0);
+        grid.flipCard(0);
+    }
 }
