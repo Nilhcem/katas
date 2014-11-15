@@ -43,4 +43,23 @@ public class GridTest {
         // When
         grid.flipCard(0);
     }
+
+    @Test
+    public void should_return_false_when_some_cards_havent_still_be_found() {
+        assertThat(grid.isGameOver()).isFalse();
+    }
+
+    @Test
+    public void should_return_true_when_all_cards_have_been_found() {
+        // Given
+        Card card1 = mock(Card.class);
+        Card card2 = mock(Card.class);
+        when(card1.isFaceDown()).thenReturn(false);
+        when(card2.isFaceDown()).thenReturn(false);
+        grid.cards[0] = card1;
+        grid.cards[1] = card2;
+
+        // When
+        assertThat(grid.isGameOver()).isTrue();
+    }
 }

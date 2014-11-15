@@ -32,4 +32,13 @@ public class Grid {
         cardToFlip.flip();
         previouslyFlippedCard = cardToFlip;
     }
+
+    public boolean isGameOver() {
+        for (Card card : cards) {
+            if (card.isFaceDown()) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
