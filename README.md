@@ -34,7 +34,7 @@
 
 ## [Memory](memory)
 
-*A memory game where you should implement both the game grid and the player algorithm*
+*A memory game where you should implement the game and debug to play*
 
 ```bash
 ./gradlew clean :memory:test :memory:run
