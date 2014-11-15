@@ -24,7 +24,7 @@ Game game = new Game("bird", "cat", "cow", "dog", "fish", "horse", "lion", "monk
 while (!game.isOver()) {
   game.flipCard(0);
   game.flipCard(15);
-...
+  ...
 }
 ```
 
