@@ -16,4 +16,25 @@ public class Card {
     public void flip() {
         faceDown = !faceDown;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Card card = (Card) o;
+        if (title != null ? !title.equals(card.title) : card.title != null) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return title != null ? title.hashCode() : 0;
+    }
 }

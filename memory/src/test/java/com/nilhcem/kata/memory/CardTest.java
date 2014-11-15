@@ -25,4 +25,21 @@ public class CardTest {
         card.flip();
         assertThat(card.isFaceDown()).isTrue();
     }
+
+    @Test
+    public void should_return_true_when_checking_two_cards_with_similar_names_equality() {
+        Card card1 = new Card("same_name");
+        card1.flip();
+        Card card2 = new Card("same_name");
+
+        assertThat(card1).isNotSameAs(card2);
+        assertThat(card1).isEqualTo(card2);
+    }
+
+    @Test
+    public void should_return_false_when_checking_different_cards_names_equality() {
+        Card card1 = new Card("name_1");
+        Card card2 = new Card("name_2");
+        assertThat(card1).isNotEqualTo(card2);
+    }
 }
