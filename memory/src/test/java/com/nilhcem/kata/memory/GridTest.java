@@ -3,6 +3,8 @@ package com.nilhcem.kata.memory;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class GridTest {
 
@@ -32,8 +34,13 @@ public class GridTest {
     }
 
     @Test(expected = UnsupportedOperationException.class)
-    public void should_throw_error_when_flipping_twice_the_same_card() {
-        grid.flipCard(0);
+    public void should_throw_exception_when_flipping_an_already_face_up_card() {
+        // Given
+        Card card = mock(Card.class);
+        when(card.isFaceDown()).thenReturn(false);
+        grid.cards[0] = card;
+
+        // When
         grid.flipCard(0);
     }
 }

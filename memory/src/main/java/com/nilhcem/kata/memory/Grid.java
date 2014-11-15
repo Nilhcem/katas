@@ -25,9 +25,10 @@ public class Grid {
 
     public void flipCard(int position) {
         Card cardToFlip = cards[position];
-        if (previouslyFlippedCard != null && previouslyFlippedCard == cardToFlip) {
-            throw new UnsupportedOperationException("You can't flip twice the same card");
+        if (!cardToFlip.isFaceDown()) {
+            throw new UnsupportedOperationException("Card is already face up");
         }
+
         cardToFlip.flip();
         previouslyFlippedCard = cardToFlip;
     }
