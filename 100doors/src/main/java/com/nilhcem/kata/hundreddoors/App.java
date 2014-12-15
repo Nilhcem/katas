@@ -12,7 +12,7 @@ public class App {
             room.toggleDoorsMultipleOf(i + 1);
         }
 
-        List<Door> allDoors = room.getAllDoors();
+        List<Door> allDoors = room.getDoors();
         for (Door door : allDoors) {
             System.out.println(door.toString());
         }

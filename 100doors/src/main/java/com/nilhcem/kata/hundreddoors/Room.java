@@ -16,7 +16,7 @@ public class Room {
         }
     }
 
-    public List<Door> getAllDoors() {
+    public List<Door> getDoors() {
         return doors;
     }
 

@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class RoomTest {
 
@@ -12,21 +13,21 @@ public class RoomTest {
 
     @Test
     public void should_contain_100_doors() {
-        assertThat(room.getAllDoors()).hasSize(100);
+        assertThat(room.getDoors()).hasSize(100);
     }
 
     @Test
     public void all_doors_should_be_closed_initially() {
-        for (Door door : room.getAllDoors()) {
-            assertThat(door.isOpened()).isFalse();
+        for (Door door : room.getDoors()) {
+            assertTrue(door.isClosed());
         }
     }
 
     @Test
     public void should_open_all_doors_at_first_pass() {
         room.toggleDoorsMultipleOf(1);
-        for (Door door : room.getAllDoors()) {
-            assertThat(door.isOpened()).isTrue();
+        for (Door door : room.getDoors()) {
+            assertTrue(door.isOpened());
         }
     }
 
@@ -34,7 +35,7 @@ public class RoomTest {
     public void should_toggle_only_doors_multiple_of_two() {
         room.toggleDoorsMultipleOf(2);
         boolean isOpened = false;
-        for (Door door : room.getAllDoors()) {
+        for (Door door : room.getDoors()) {
             assertThat(door.isOpened()).isEqualTo(isOpened);
             isOpened = !isOpened;
         }
@@ -45,7 +46,7 @@ public class RoomTest {
         room.toggleDoorsMultipleOf(1);
         room.toggleDoorsMultipleOf(2);
         boolean isOpened = true;
-        for (Door door : room.getAllDoors()) {
+        for (Door door : room.getDoors()) {
             assertThat(door.isOpened()).isEqualTo(isOpened);
             isOpened = !isOpened;
         }
@@ -54,7 +55,7 @@ public class RoomTest {
     @Test
     public void should_toggle_only_last_door() {
         room.toggleDoorsMultipleOf(100);
-        List<Door> allDoors = room.getAllDoors();
+        List<Door> allDoors = room.getDoors();
         for (int i = 0; i < 100; i++) {
             assertThat(allDoors.get(i).isOpened()).isEqualTo(i == 100 - 1);
         }

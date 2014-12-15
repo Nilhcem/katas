@@ -2,15 +2,19 @@ package com.nilhcem.kata.hundreddoors;
 
 public class Door {
 
-    int idx;
+    int index;
     boolean opened;
 
-    public Door(int idx) {
-        this.idx = idx;
+    public Door(int index) {
+        this.index = index;
     }
 
     public boolean isOpened() {
         return opened;
+    }
+
+    public boolean isClosed() {
+        return !opened;
     }
 
     public void toggle() {
@@ -19,6 +23,6 @@ public class Door {
 
     @Override
     public String toString() {
-        return String.format("#%03d: %s", idx, isOpened() ? "opened" : "closed");
+        return String.format("#%03d: %s", index, isOpened() ? "opened" : "closed");
     }
 }
